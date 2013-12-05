@@ -49,7 +49,7 @@ public class HelloWorldExample extends HttpServlet {
         //ResourceBundle.getBundle("LocalStrings",request.getLocale());
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        String title="HELLO在要地地";
+        String title="HELLO在要地地 mrlong";
         out.println("<html>");
         out.println("<head>");
 

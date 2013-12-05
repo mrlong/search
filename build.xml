@@ -3,7 +3,7 @@
   <!-- set global properties for this build -->
   <property name="src" location="src"/>
   <property name="build" location="build"/>
-  <property name="dist"  location="webroot/WEB-INF"/>
+  <property name="dist"  location="webroot"/>
   <property name="lib.dir"  location="webroot/WEB-INF/lib"/>
 
   <!--项目的lib -->
@@ -29,10 +29,10 @@
   <target name="dist" depends="compile"
         description="generate the distribution" >
     <!-- Create the distribution directory -->
-    <delete dir="${dist}/classes" quiet="true"/>
-    <mkdir dir="${dist}/classes"/>
+    <delete dir="${dist}/WEB-INF/classes" quiet="true"/>
+    <mkdir dir="${dist}/WEB-INF/classes"/>
 
-    <copy todir="${dist}/classes">
+    <copy todir="${dist}/WEB-INF/classes">
       <fileset dir="${build}">
         <exclude name="**/*.java" />
       </fileset>
@@ -42,11 +42,26 @@
 <!--     <jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}"/> -->
   </target>
 
+
   <target name="clean" depends="dist" description="clean up" >
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}" quiet="true"/>
 <!--     <delete dir="${dist}"/> -->
   </target>
 
-  <target name="build" depends="clean,compile,init" />
+   
+  <!-- 发布 -->
+  <target name="release" depends="clean" description="clean up" >
+    <property name="webapp" location="C:\apache-tomcat-7.0.47\webapps\search-app"/>
+    <delete dir="${webapp}" quiet="true"/>
+    <copy todir="${webapp}">
+      <fileset dir="${dist}">
+        <exclude name="**/*.java" />
+      </fileset>
+    </copy>
+
+  </target>
+
+
+  <target name="build" depends="clean,release,compile,init" />
 </project>
