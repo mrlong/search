@@ -1,18 +1,41 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page info    = "mrlongssssss"%>
+<%@ page import   = "java.lang.*"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%-- 注意事项 --%>
+<%!
+	public int count = 0;
+	public String info()
+  {
+  	return  "hello  : " + count ;
+  }; 
+%>
 
 <html>
-  <head>
-    <title> Search by mrlong.com@gmail.com </title>
-  </head>
+<head>
+<title>这是一个jsp页面代码</title>
+</head>
 
-  <body>
+<jsp:include page="./header.jsp" />
+<%--@include file = "header.jsp"%--%> 
 
-    <h1>JSP is a easy as ...<h1>
+<body>
+		
 
-    <%-- Calculate the sum of 1+2+3+4 ... --%>
-    
-    <!-- 1+2+3+4=<c:out value="${1+2+3+4}"/>   -->
-    
-  </body>
+    欢迎进入<br>
+    现在是时间是：
+    <%out.println(new java.util.Date()); %>
+    <br>
+    <%out.println(++count);%>
+    <br>
+    <%out.println(info());%>
+    <%="mrlong"%>
+    <br>
+    <%out.println(getServletInfo());%>
+
+    <jsp:include page="./err.jsp" />
+
+</body>
 </html>
