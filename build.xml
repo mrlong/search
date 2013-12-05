@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project name="search" default="build" basedir=".">
     <description>search</description>
   <!-- set global properties for this build -->
@@ -11,6 +12,10 @@
     <!-- C:\apache-tomcat-7.0.47\lib\servlet-api.jar -->
     <fileset dir="${lib.dir}" includes="*.jar" />
   </path>
+  <path id="tomcat.lib.dir">
+    <!-- C:\apache-tomcat-7.0.47\lib\servlet-api.jar -->
+    <fileset dir="C:\apache-tomcat-7.0.47\lib" includes="*.jar" />
+  </path>
 
   <target name="init" >
     <!-- Create the time stamp -->
@@ -23,11 +28,19 @@
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}" encoding="UTF-8" fork="true" includeantruntime="on" >
         <classpath refid="lib.dir" />
+        <classpath refid="tomcat.lib.dir" />
     </javac>
+
+    <!-- 其他配置文件 -->
+    <copy todir="${build}">
+      <fileset dir="${src}">
+        <exclude name="**/*.java" />
+      </fileset>
+    </copy>
+
   </target>
 
-  <target name="dist" depends="compile"
-        description="generate the distribution" >
+  <target name="dist" depends="compile" description="generate the distribution" >
     <!-- Create the distribution directory -->
     <delete dir="${dist}/WEB-INF/classes" quiet="true"/>
     <mkdir dir="${dist}/WEB-INF/classes"/>
