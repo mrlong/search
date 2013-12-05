@@ -23,11 +23,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.lucene.analysis.Analyzer;  
-import org.apache.lucene.analysis.standard.StandardAnalyzer;  
-import org.apache.lucene.document.Document;  
-import org.apache.lucene.document.Field;  
-import org.apache.lucene.index.IndexWriter;
+// import org.apache.lucene.analysis.Analyzer;  
+// import org.apache.lucene.analysis.standard.StandardAnalyzer;  
+// import org.apache.lucene.document.Document;  
+// import org.apache.lucene.document.Field;  
+// import org.apache.lucene.index.IndexWriter;
 
 
 /**
@@ -79,13 +79,13 @@ public class HelloWorldExample extends HttpServlet {
         out.println("</html>");
 
 
-        IndexWriter writer = new IndexWriter("c:/data/index", new StandardAnalyzer(), true);
-        Document doc = new Document();
-        doc.add(new Field("title", "lucene introduction", Field.Store.YES, Field.Index.TOKENIZED));
-        doc.add(new Field("content", "lucene works well", Field.Store.YES, Field.Index.TOKENIZED));
-        writer.addDocument(doc);
-        writer.optimize();
-        writer.close();
+        // IndexWriter writer = new IndexWriter("c:/data/index", new StandardAnalyzer(), true);
+        // Document doc = new Document();
+        // doc.add(new Field("title", "lucene introduction", Field.Store.YES, Field.Index.TOKENIZED));
+        // doc.add(new Field("content", "lucene works well", Field.Store.YES, Field.Index.TOKENIZED));
+        // writer.addDocument(doc);
+        // writer.optimize();
+        // writer.close();
 
     }
 }
